@@ -1,0 +1,1 @@
+"""Pacote da API de atendimento empresarial."""
