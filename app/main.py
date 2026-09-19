@@ -1,8 +1,14 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
+import sys
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
+
+# Permite iniciar este arquivo diretamente a partir da raiz do projeto.
+if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app.api.routes import router
 from app.config.settings import get_settings
@@ -47,3 +53,9 @@ app.include_router(router)
 @app.get("/health", tags=["operacao"])
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
