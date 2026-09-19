@@ -39,7 +39,7 @@ Defina `REQUIRE_HTTPS=true` e publique atras de um proxy que entregue HTTPS e re
 Para gerar um backup cifrado, configure uma chave Fernet em `BACKUP_ENCRYPTION_KEY` e execute:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\backup_database.py
+ .\.venv\Scripts\python.exe -m scripts.backup_database
 ```
 
 O arquivo produzido em `backups/` e criptografado e nao deve ser versionado. Execute os testes com `pytest`.
